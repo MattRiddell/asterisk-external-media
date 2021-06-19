@@ -1,27 +1,28 @@
 
-
 # Asterisk External Media Sample
 
 This package demonstrates how to use the ARI External Media feature to transcribe
-the audio from a bridge using the Google Speech APIs. 
+the audio from a bridge using the Google Speech APIs.
 
 ## Installation
 
-#### Prerequisites
+### Prerequisites
+
 * A functional Asterisk 16.6.0+ installation.
 * A conference bridge or phone configured.
 * Node.JS version 10 or greater.
 * Google Speech API credentials set in environment variable GOOGLE_APPLICATION_CREDENTIALS.  
-See https://cloud.google.com/speech-to-text/docs/ for more information.
+  
+See <https://cloud.google.com/speech-to-text/docs/> for more information.
 
 Run `npm install` from the top of the source tree.
 This will install the required npm packages including `node-ari-client` and `@google-cloud/speech`.
 You can then run the transcriber as `bin/ari-transcriber`.  If you add the `-g`
-option to `npm install` to install system wide, you can just run `ari-transcriber`. 
+option to `npm install` to install system wide, you can just run `ari-transcriber`.
 
 ## Usage
 
-```
+```bash
 $ ari-transcriber --help
 ari-transcriber [options] <dialstring>
 
@@ -60,6 +61,7 @@ Examples:
 ```
 
 The ari-transcriber performs several tasks:
+
 * Creates an ari-client instance
 * Creates a WebSocket server from which the live transcription can be accessed
 * Starts an audio server to receive the audio from Asterisk
@@ -80,12 +82,12 @@ channel.  If you were ading External Media capabilities to your own application,
 chances are that your app would already control the participant bridge and you
 wouldn't need the Local channel and mixing bridge.
 
-## Try It!
+## Try It
 
 You don't need the WebSocket transcription server to try this.
 Just a phone to call.
 
-```
-$ export GOOGLE_APPLICATION_CREDENTIALS=<path to Google API credentials>
-$ ari-transcriber --format=slin16 'Local/1234'
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=<path to Google API credentials>
+ari-transcriber --format=slin16 'Local/1234'
 ````
